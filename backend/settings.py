@@ -25,7 +25,15 @@ SECRET_KEY = 'django-insecure-k!1a)ldi+5wjv#nb@$+3cmiwv=3**)wyel@8io(lby_^6xnt0@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '3dcc-2c0f-2a80-233d-d710-5587-4acf-a486-8b72.ngrok-free.app'
+]
+# ALLOWED_HOSTS.append('da71-102-135-170-239.ngrok-free.app')
+CORS_ALLOWED_ORIGINS = [
+    'https://3dcc-2c0f-2a80-233d-d710-5587-4acf-a486-8b72.ngrok-free.app',
+]
 
 
 # Application definition
@@ -37,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
+    'AIApi'
 ]
 
 MIDDLEWARE = [
@@ -47,10 +58,30 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+CORS_ORIGIN_ALLOW_ALL = True
 
+# Africa's Talking Config
+AT_USERNAME = 'womenintechcodex'
+AT_API_KEY = 'atsk_3cee469f85404d8107650dbdd32e8841fb864b536d7d896364b5e12ccff951b4dd2bee79'
+AT_VOICE_NUMBER = '+254711082535'
+
+# Gemini AI Config
+GEMINI_API_KEY = 'AIzaSyCPFZsrth1KuD4b-Fg9BhHujRb1NK2ZzGI'
+# App URL (for callbacks)
+APP_BASE_URL = 'https://3dcc-2c0f-2a80-233d-d710-5587-4acf-a486-8b72.ngrok-free.app'
 ROOT_URLCONF = 'backend.urls'
-
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+    ],
+}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
