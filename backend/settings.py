@@ -11,7 +11,13 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -35,6 +41,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://3dcc-2c0f-2a80-233d-d710-5587-4acf-a486-8b72.ngrok-free.app',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -47,10 +54,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'drf_spectacular',
+    'BotVoice',
     'AIApi'
+
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,6 +73,16 @@ MIDDLEWARE = [
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Groq STT API',
+    'DESCRIPTION': 'Convert speech to text and process with Groq',
+    'VERSION': '1.0.0',
+}
+
 # Africa's Talking Config
 AT_USERNAME = 'womenintechcodex'
 AT_API_KEY = 'atsk_3cee469f85404d8107650dbdd32e8841fb864b536d7d896364b5e12ccff951b4dd2bee79'
@@ -71,6 +92,7 @@ AT_VOICE_NUMBER = '+254711082535'
 GEMINI_API_KEY = 'AIzaSyCPFZsrth1KuD4b-Fg9BhHujRb1NK2ZzGI'
 # App URL (for callbacks)
 APP_BASE_URL = 'https://3dcc-2c0f-2a80-233d-d710-5587-4acf-a486-8b72.ngrok-free.app'
+
 ROOT_URLCONF = 'backend.urls'
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
