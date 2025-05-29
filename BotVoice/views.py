@@ -51,7 +51,7 @@ def chatbot_api(request):
         
         # Create XML response
         response_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<response>
+<response>`
     <status>{status}</status>
     <message>{escaped_text}</message>
 </response>
