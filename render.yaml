@@ -1,0 +1,15 @@
+version: "1"
+
+
+services:
+  - type: web
+    plan: free
+    name: Kalm-AI
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn Kalm-AI.asgi:application -k uvicorn.workers.UvicornWorker --workers ${WEB_CONCURRENCY} --timeout 120 --keep-alive 5"
+    envVars:
+      - key: GEMINI_API_KEY
+        value: ${GEMINI_API_KEY}
+      - key: DJANGO_SETTINGS_MODULE
+        value: Therabot.settings.production 
