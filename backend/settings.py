@@ -34,11 +34,11 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '3dcc-2c0f-2a80-233d-d710-5587-4acf-a486-8b72.ngrok-free.app'
+    'e3ab-2c0f-2a80-233d-d710-00-23d.ngrok-free.app/'
 ]
 # ALLOWED_HOSTS.append('da71-102-135-170-239.ngrok-free.app')
 CORS_ALLOWED_ORIGINS = [
-    'https://3dcc-2c0f-2a80-233d-d710-5587-4acf-a486-8b72.ngrok-free.app',
+    'https://e3ab-2c0f-2a80-233d-d710-00-23d.ngrok-free.app',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_spectacular',
     'BotVoice',
-    'AIApi'
 
 ]
 
@@ -91,7 +90,7 @@ AT_VOICE_NUMBER = '+254711082535'
 # Gemini AI Config
 GEMINI_API_KEY = 'AIzaSyCPFZsrth1KuD4b-Fg9BhHujRb1NK2ZzGI'
 # App URL (for callbacks)
-APP_BASE_URL = 'https://3dcc-2c0f-2a80-233d-d710-5587-4acf-a486-8b72.ngrok-free.app'
+APP_BASE_URL = 'https://e3ab-2c0f-2a80-233d-d710-00-23d.ngrok-free.app/'
 
 ROOT_URLCONF = 'backend.urls'
 REST_FRAMEWORK = {
