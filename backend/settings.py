@@ -34,11 +34,13 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'e3ab-2c0f-2a80-233d-d710-00-23d.ngrok-free.app/'
+    'e3ab-2c0f-2a80-233d-d710-00-23d.ngrok-free.app/',
+    'therabothutsy.onrender.com'
 ]
 # ALLOWED_HOSTS.append('da71-102-135-170-239.ngrok-free.app')
 CORS_ALLOWED_ORIGINS = [
     'https://e3ab-2c0f-2a80-233d-d710-00-23d.ngrok-free.app',
+    'https://therabothutsy.onrender.com',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
