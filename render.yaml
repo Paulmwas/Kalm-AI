@@ -4,11 +4,11 @@ version: "1"
 services:
   - type: web
     plan: free
-    name: KALM_AI
+    name: backend
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn KALM_AI.asgi:application -k uvicorn.workers.UvicornWorker --workers ${WEB_CONCURRENCY} --timeout 120 --keep-alive 5"
+    startCommand: "python -m gunicorn backend.asgi:application -k uvicorn.workers.UvicornWorker --workers ${WEB_CONCURRENCY} --timeout 120 --keep-alive 5"
     envVars:
-      - key: GEMINI_API_KEY
+      - key: GEMINI_API_KEYs
       - key: DJANGO_SETTINGS_MODULE
-        value: KALM_AI.settings.production 
+        value: backend.settings.production 
