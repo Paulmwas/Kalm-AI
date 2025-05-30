@@ -10,6 +10,5 @@ services:
     startCommand: "python -m gunicorn kalm_ai.asgi:application -k uvicorn.workers.UvicornWorker --workers ${WEB_CONCURRENCY} --timeout 120 --keep-alive 5"
     envVars:
       - key: GEMINI_API_KEY
-        value: ${GEMINI_API_KEY}
       - key: DJANGO_SETTINGS_MODULE
-        value: Therabot.settings.production 
+        value: kalm_ai.settings.production 
